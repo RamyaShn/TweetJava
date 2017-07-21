@@ -26,19 +26,27 @@ import twitter4j.conf.ConfigurationBuilder;
  */
 public class Status extends javax.swing.JFrame {
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton clearBtn;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton postBtn;
+    private javax.swing.JTextArea status;
+    private javax.swing.JButton uploadBtn;
+    private javax.swing.JLabel uploadLabel;
+    // End of variables declaration//GEN-END:variables
+    
+    static String TWITTER_CONSUMER_KEY = "********";
+    static String TWITTER_CONSUMER_SECRET = "*******";
+    private static final String access_token = "*******";
+    private static final String access_token_secret = "******";
+    File f ;
     /**
      * Creates new form Status
      */
     public Status() {
         initComponents();
     }
-    
-    static String TWITTER_CONSUMER_KEY = "********";
-    static String TWITTER_CONSUMER_SECRET = "*******";
-    private static final String access_token = "*******";
-    private static final String access_token_secret = "******";
-    
-    File f ;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,7 +189,7 @@ public class Status extends javax.swing.JFrame {
         StatusUpdate stat = new StatusUpdate(status.getText()); //Text to be posted
         stat.setMedia(f); //Image to be posted
         twitter4j.Status st = tweet.updateStatus(stat);
-        JOptionPane.showMessageDialog(this, "Status Posted", "info", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(this, "Status Posted"+st, "info", JOptionPane.OK_OPTION);
         } catch (TwitterException ex) {
             Logger.getLogger(Status.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -226,14 +234,4 @@ public class Status extends javax.swing.JFrame {
             }
         });
     }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton clearBtn;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton postBtn;
-    private javax.swing.JTextArea status;
-    private javax.swing.JButton uploadBtn;
-    private javax.swing.JLabel uploadLabel;
-    // End of variables declaration//GEN-END:variables
 }
